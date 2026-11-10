@@ -5,387 +5,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NumberInfo BD</title>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090d18;color:#fff;
+ font-family:Arial,sans-serif;padding:20px;
 }
-
-body {
-  background: #090909;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  padding: 20px;
+.container{max-width:480px;margin:auto}
+header{text-align:center;padding:20px 0}
+.logo{font-size:30px;font-weight:bold;color:#f5c542}
+header p{color:#aaa}
+h2{font-size:21px;margin-top:25px}
+.card{
+ background:#151d2e;border:1px solid #29344a;
+ padding:20px;border-radius:16px;margin:15px 0;
 }
-
-.container {
-  max-width: 480px;
-  margin: 35px auto;
+.free{border-color:#34435c}
+.premium{
+ background:linear-gradient(145deg,#30240b,#171b29);
+ border:1px solid #e6b83f;
+ box-shadow:0 0 18px #e6b83f22;
 }
-
-.header {
-  text-align: center;
-  margin-bottom: 30px;
+.price{font-size:28px;font-weight:bold;margin:12px 0}
+.gold{color:#f5c542}
+ul{padding-left:22px;line-height:2;color:#ddd}
+button{
+ width:100%;padding:14px;border:0;border-radius:10px;
+ font-size:16px;font-weight:bold;cursor:pointer;
+ background:#27344a;color:white;
 }
-
-.logo {
-  color: #d4af37;
-  font-size: 35px;
-  font-weight: bold;
-  letter-spacing: 1px;
+.premium button{
+ background:linear-gradient(90deg,#e6b83f,#ffe59a);
+ color:#17120a;
 }
-
-.header p {
-  color: #aaa;
-  margin-top: 8px;
-  font-size: 14px;
+.badge{
+ display:inline-block;background:#f5c542;color:#17120a;
+ padding:5px 12px;border-radius:20px;font-size:12px;
+ font-weight:bold;
 }
-
-.card {
-  background: #151515;
-  border: 1px solid #574718;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 5px 25px #000;
-}
-
-h2 {
-  color: #e5c45b;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-label {
-  display: block;
-  margin-bottom: 9px;
-  color: #ddd;
-}
-
-input {
-  width: 100%;
-  padding: 15px;
-  background: #080808;
-  border: 1px solid #806b2b;
-  border-radius: 9px;
-  color: white;
-  font-size: 17px;
-  outline: none;
-}
-
-input:focus {
-  border-color: #e5c45b;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 9px;
-  background: linear-gradient(135deg, #f3d36a, #b58b20);
-  color: #111;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(.98);
-}
-
-.result {
-  display: none;
-  margin-top: 22px;
-  padding: 18px;
-  background: #101010;
-  border: 1px solid #665321;
-  border-radius: 12px;
-}
-
-.result h3 {
-  color: #e5c45b;
-  margin-bottom: 15px;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 11px 0;
-  border-bottom: 1px solid #292929;
-  font-size: 14px;
-}
-
-.info span:first-child {
-  color: #aaa;
-}
-
-.info span:last-child {
-  color: #f0d77e;
-  text-align: right;
-  overflow-wrap: anywhere;
-}
-
-.message {
-  color: #ff7777;
-  margin-top: 12px;
-  font-size: 14px;
-}
-
-.note {
-  color: #999;
-  font-size: 12px;
-  line-height: 1.6;
-  margin-top: 15px;
-}
-
-.history {
-  margin-top: 22px;
-  background: #151515;
-  border: 1px solid #493c1b;
-  padding: 18px;
-  border-radius: 12px;
-}
-
-.history h3 {
-  color: #e5c45b;
-  margin-bottom: 12px;
-}
-
-.history-item {
-  padding: 9px 0;
-  border-bottom: 1px solid #292929;
-  color: #ccc;
-  font-size: 14px;
-}
-
-.clear {
-  background: #292929;
-  color: #e5c45b;
-  font-size: 13px;
-  padding: 10px;
-}
-
-.footer {
-  text-align: center;
-  color: #777;
-  font-size: 12px;
-  margin-top: 25px;
-  line-height: 1.7;
-}
+.note{color:#999;font-size:12px;text-align:center}
+#message{color:#f5c542;text-align:center;margin-top:15px}
+footer{text-align:center;color:#777;font-size:12px;margin:30px 0}
 </style>
 </head>
-
 <body>
-
 <div class="container">
 
-  <div class="header">
-    <div class="logo">NUMBERINFO BD</div>
-    <p>Bangladesh Mobile Number Checker</p>
-  </div>
+<header>
+ <div class="logo">📱 NumberInfo BD</div>
+ <p>Choose Your Plan</p>
+</header>
 
-  <div class="card">
-    <h2>📱 নম্বর চেক করুন</h2>
+<h2>আপনার পছন্দের প্ল্যান</h2>
 
-    <label for="phone">বাংলাদেশের মোবাইল নম্বর দিন</label>
+<div class="card free">
+ <h2>🆓 Free Plan</h2>
+ <div class="price">৳0 <small>/ Free</small></div>
+ <ul>
+  <li>দৈনিক ৫টি নম্বর চেক (পরিকল্পিত সুবিধা)</li>
+  <li>বাংলাদেশি নম্বর যাচাই</li>
+  <li>অপারেটর প্রিফিক্স শনাক্ত</li>
+  <li>সার্চ হিস্টোরি</li>
+ </ul>
+ <button onclick="showMessage('আপনি Free Demo Plan দেখছেন।')">
+ Current Plan
+ </button>
+</div>
 
-    <input
-      type="tel"
-      id="phone"
-      placeholder="017XXXXXXXX"
-      maxlength="20"
-    >
+<div class="card premium">
+ <span class="badge">⭐ PREMIUM</span>
+ <h2 class="gold">👑 Premium Plan</h2>
+ <div class="price gold">Premium</div>
+ <ul>
+  <li>আনলিমিটেড চেক (পরিকল্পিত)</li>
+  <li>বিস্তারিত অপারেটর তথ্য</li>
+  <li>PDF রিপোর্ট</li>
+  <li>CSV রিপোর্ট</li>
+  <li>বিজ্ঞাপনমুক্ত অভিজ্ঞতা</li>
+  <li>Premium Member ব্যাজ</li>
+ </ul>
+ <button onclick="showMessage('Premium Demo Mode — আসল পেমেন্ট এখনো চালু হয়নি।')">
+ ⭐ Upgrade to Premium
+ </button>
+</div>
 
-    <button onclick="checkNumber()">CHECK NUMBER</button>
+<p id="message"></p>
+<p class="note">
+ Premium সুবিধাগুলো এখন Demo Design মাত্র।
+ আসল অ্যাকাউন্ট ও পেমেন্ট সিস্টেম এখনো চালু হয়নি।
+</p>
 
-    <div id="message" class="message"></div>
-
-    <div class="result" id="result">
-      <h3>✓ Search Result</h3>
-
-      <div class="info">
-        <span>মোবাইল নম্বর</span>
-        <span id="number"></span>
-      </div>
-
-      <div class="info">
-        <span>দেশ</span>
-        <span>Bangladesh</span>
-      </div>
-
-      <div class="info">
-        <span>Country Code</span>
-        <span>+880</span>
-      </div>
-
-      <div class="info">
-        <span>Operator Prefix</span>
-        <span id="prefix"></span>
-      </div>
-
-      <div class="info">
-        <span>সম্ভাব্য অপারেটর</span>
-        <span id="operator"></span>
-      </div>
-
-      <div class="info">
-        <span>নম্বরের ধরন</span>
-        <span>Mobile Number</span>
-      </div>
-
-      <p class="note">
-        সতর্কতা: এই ফলাফল নম্বরের ফরম্যাট ও প্রিফিক্সের ভিত্তিতে দেখানো হয়।
-        MNP-এর কারণে বর্তমান অপারেটর আলাদা হতে পারে।
-        এটি কোনো ব্যক্তির পরিচয় বা ঠিকানা শনাক্ত করে না।
-      </p>
-
-      <button onclick="copyResult()">COPY RESULT</button>
-    </div>
-  </div>
-
-  <div class="history">
-    <h3>🕘 Search History</h3>
-    <div id="historyList">এখনো কোনো সার্চ করা হয়নি।</div>
-    <button class="clear" onclick="clearHistory()">CLEAR HISTORY</button>
-  </div>
-
-  <div class="footer">
-    © 2026 NumberInfo BD<br>
-    Made with ❤️ in Bangladesh
-  </div>
-
+<footer>© 2026 NumberInfo BD</footer>
 </div>
 
 <script>
-const operators = {
-  "013": "Grameenphone",
-  "017": "Grameenphone",
-  "014": "Banglalink",
-  "019": "Banglalink",
-  "016": "Airtel",
-  "018": "Robi",
-  "015": "Teletalk"
-};
-
-function normalizeNumber(value) {
-  let number = value.replace(/[\s\-()]/g, "");
-
-  if (number.startsWith("+880")) {
-    number = "0" + number.slice(4);
-  } else if (number.startsWith("880")) {
-    number = "0" + number.slice(3);
-  }
-
-  return number;
+function showMessage(text){
+ document.getElementById('message').textContent=text;
 }
-
-function checkNumber() {
-  const input = document.getElementById("phone").value.trim();
-  const message = document.getElementById("message");
-  const result = document.getElementById("result");
-
-  message.textContent = "";
-  result.style.display = "none";
-
-  if (!input) {
-    message.textContent = "দয়া করে একটি মোবাইল নম্বর লিখুন।";
-    return;
-  }
-
-  const number = normalizeNumber(input);
-
-  if (!/^01[3-9]\d{8}$/.test(number)) {
-    message.textContent = "ভুল নম্বর! সঠিক ১১ ডিজিটের বাংলাদেশি নম্বর দিন।";
-    return;
-  }
-
-  const prefix = number.substring(0, 3);
-  const operator = operators[prefix] || "Unknown";
-
-  document.getElementById("number").textContent = number;
-  document.getElementById("prefix").textContent = prefix;
-  document.getElementById("operator").textContent = operator;
-
-  result.style.display = "block";
-
-  saveHistory(number, operator);
-}
-
-function saveHistory(number, operator) {
-  let history = JSON.parse(
-    localStorage.getItem("numberinfo_history") || "[]"
-  );
-
-  history.unshift({
-    number: number,
-    operator: operator
-  });
-
-  history = history.slice(0, 10);
-
-  localStorage.setItem(
-    "numberinfo_history",
-    JSON.stringify(history)
-  );
-
-  showHistory();
-}
-
-function showHistory() {
-  const history = JSON.parse(
-    localStorage.getItem("numberinfo_history") || "[]"
-  );
-
-  const list = document.getElementById("historyList");
-
-  if (history.length === 0) {
-    list.textContent = "এখনো কোনো সার্চ করা হয়নি।";
-    return;
-  }
-
-  list.innerHTML = "";
-
-  history.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "history-item";
-    div.textContent = item.number + " — " + item.operator;
-    list.appendChild(div);
-  });
-}
-
-function clearHistory() {
-  localStorage.removeItem("numberinfo_history");
-  showHistory();
-}
-
-function copyResult() {
-  const number = document.getElementById("number").textContent;
-  const prefix = document.getElementById("prefix").textContent;
-  const operator = document.getElementById("operator").textContent;
-
-  const text =
-    "NumberInfo BD\n" +
-    "Number: " + number + "\n" +
-    "Country: Bangladesh\n" +
-    "Country Code: +880\n" +
-    "Prefix: " + prefix + "\n" +
-    "Operator: " + operator;
-
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text)
-      .then(() => alert("Result copied!"))
-      .catch(() => alert("Copy করা যায়নি।"));
-  } else {
-    alert("আপনার ব্রাউজারে Copy সুবিধা পাওয়া যাচ্ছে না।");
-  }
-}
-
-showHistory();
 </script>
-
 </body>
 </html>
